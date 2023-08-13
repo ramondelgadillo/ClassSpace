@@ -1,0 +1,28 @@
+pip install:
+    1. flask
+    2. pyrebase // pip install pyrebase4, for firebase authentication
+    3. https://pypi.org/project/RateMyProfessorAPI/  pip install RateMyProfessorAPI 
+    4. https://github.com/sarahyurick/Rate-My-Professor-Scraper-and-Search
+    5. flask-WTF // pip install Flask Flask-WTF
+
+Steps:
+1. *Ensure environment is running python 3.11*
+2. pip install Flask
+3. pip install pyrebase4
+4. pip install firebase-admin
+5. pip install ratemyprofessorAPI
+6. pip install Flask Flask-WTF
+7. python -m pip install Jinja2 (may already be included in package but just to be sure)
+    
+
+
+
+
+
+
+
+
+
+
+
+    

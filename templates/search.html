@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <!-- Start of Search Results - Ryan Randazzo -->
+<!-- Column for search results -->
+<div class="col-md-8 col-lg-6 vstack gap-4">
+  <!-- Card container for search bar -->
+  <div class="card mb-3">
+    <!-- Header for search bar -->
+    <div class="card-header" style="background-color: #003153;">
+      <!-- Search bar heading -->
+      <h3 style="color:#ffffff;">Search Results</h3>
+    </div>
+    
+
+
+
+      <h5> Current School: {{ school_name }}</h5>
+      <form method="POST">
+        {{ form.hidden_tag() }}
+        <!-- {{ form.school_name.label(class="form-label") }} -->
+        
+        {{ form.school_name(class="form-control", placeholder="Change School") }}
+
+        {{ form.prof(class="form-control", placeholder="Search Professor") }}
+
+        {{ form.submit(class="btn btn-outline-secondary") }}
+      </form>
+      
+  <!-- Card container for displaying search results -->
+  <div class="card">
+    <!-- Card body container for search result information -->
+    <div class="card-body">
+      <div class="media">
+        <div class="media-body">
+          <!-- Displays name of searched item-->
+          
+          {% if name != "None Grabel" and name != "" %}
+          <h5 class="mt-0">{{ name }}</h5>
+            <p>{{ name }} works in the {{ department }} of {{ school }}.</p>
+            <p>Rating: {{ rating }} / 5.0</p>
+            <p>Difficulty: {{ difficulty }} / 5.0</p>
+            <p>Total Ratings: {{ num_ratings }}</p>
+            <p>Would Take Again: {{ would_take_again }}%</p>
+            <br/>
+            <form method="GET" action="{{ url_for('postProfessor') }}" name="creview">
+              
+              <button onclick="createReview('{{ name }}')">Create Review</button>
+            </form>
+          {% else %}
+            <p>Sorry, couldn't find what you were looking for.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End of Search Results -->
+
+
+{% endblock %}

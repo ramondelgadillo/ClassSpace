@@ -1,0 +1,325 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  
+  <!-- Ramon Delgadillo did all the HTML for the inbox page -->
+  <!-- Inbox Start-->
+  <div role="main" class="col-sm-9">
+    <div class="d-flex align-items-center p-3 my-3 text-white-50 rounded shadow-sm" style="background-color: #003153;">
+      <div>
+        <h4 class="mb-0 text-white" style="margin: 30px;">Inbox</h4>
+      </div>
+      <nav>
+        <!-- Here are the tabs to choose from all messages or messages sent -->
+        <div class="nav nav-tabs custom-tab border-bottom-0 mt-4" style="margin-left: 50px;" id="nav-tab" role="tablist">
+          <button class="nav-link active" id="nav-all-tab" style="margin-top: 20px;" data-bs-toggle="tab" data-bs-target="#nav-all" type="button" role="tab" aria-controls="nav-all" aria-selected="true">Messages</button>
+          <button class="nav-link" id="nav-sent-tab" style="margin-top: 20px;" data-bs-toggle="tab" data-bs-target="#nav-sent" type="button" role="tab" aria-controls="nav-sent" aria-selected="true">Sent Messages</button>
+
+        </div>
+      </nav>
+    </div>
+    <!--Start of Message List-->
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+      <div id="container">
+        <div align="left">
+          <label>
+            <!--Here is the select all check box -->
+            <input type="checkbox" style="margin-right: 7px;" id="toggle" value="select" onClick="do_this()"/>Select All
+          </label>
+          <button type="button" id="trash_button" style="margin-left: 15px;" class="btn btn-danger btn-rounded btn-sm" href="#"><i class="fa fa-trash" aria-hidden="true"></i>
+          <!--Here is the send message button which causes a message box to appear -->
+          <button type="button" style="float: right;" id="send_button" class="btn btn-success btn-rounded btn-sm text-right" data-toggle="modal" data-target="#sendModal" data-whatever="#sendModal">Send<i class="fa fa-paper-plane" aria-hidden="true" style="margin-left: 4px;"></i></button>
+        </div>
+        <!--Start of Send Message Box-->
+        {% if user %}
+        <div class="modal fade" id="sendModal" tabindex="-1" role="dialog" aria-labelledby="sendModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header " style="background-color: #003153; color: #fff; text-align: left;">
+                    <h4 class="modal-title w-100 font-weight-bold py-2">New Message</h4>
+                    <button type="button" class="btn-close btn-close-white small" style="margin-bottom: 27px;" data-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                    <div class="modal-body">
+                        <form id="sendForm" method="POST" action="{{ url_for('send_message') }}">
+                            <div class="form-group px-2 mb-3" style="text-align: left;">
+                                <label for="recipientUsername">Recipient </label>
+                                <input type="text" class="form-control" placeholder="Enter Username" id="recipientUsername" name="recipientUsername" required>
+                            </div>
+                            <div class="form-group px-2 mb-3" style="text-align: left;">
+                                <label for="messageText">Message </label>
+                                <textarea class="form-control"  placeholder="Message" id="messageText" name="messageText" rows="5" required></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                        <button type="submit" form="sendForm" class="btn btn-dark" style="background-color: #003153;">Send Message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %} 
+        <!--End of Send Message Box-->
+      </div>
+
+      <div class="tab-content" id="nav-tabContent">
+        <!--Here is the start of All Messages-->
+        <div class="tab-pane fade show active p-3" id="nav-all" role="tabpanel" aria-labelledby="nav-all-tab">
+          <table class="table table-hover table-inbox">
+            <tbody>
+            <tr href="#">
+              <td>
+                  <div>
+                    <input type="checkbox" name="approve[]" value="1" class="mail-checkbox">                     
+                  </div>
+              </td>
+            <td>
+              <a href="#"><img align="left" class="profile-img mr-3 rounded" src="https://via.placeholder.com/40x40" alt=""></a>
+            </td>
+              <td>
+
+                <div class="media pull-left">
+                  <a class="text-primary" href="#">Username</a>
+                  <p class="inbox-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  <span class="media-date">8 hours ago</span>
+              </div>
+              </td>
+          </tr>
+            <tr href="#">
+              <td>
+                  <div>
+                    <input type="checkbox" name="approve[]" value="1" class="mail-checkbox">
+                  </div>
+              </td>
+            <td>
+              <a href="#"><img align="left" class="profile-img mr-3 rounded" src="https://via.placeholder.com/40x40" alt=""></a>
+            </td>
+              <td>
+
+                <div class="media pull-left">
+                  <a class="text-primary" href="#">Username</a>
+                  <p class="inbox-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+                  <span class="media-date">13 hours ago</span>
+              </div>
+              </td>
+          </tr>
+            <tr href="#">
+              <td>
+                  <div>
+                      <input type="checkbox" name="approve[]" value="1" class="mail-checkbox">
+                  </div>
+              </td>
+            <td>
+              <a href="#"><img align="left" class="profile-img mr-3 rounded" src="https://via.placeholder.com/40x40" alt=""></a>
+            </td>
+              <td>
+
+                <div class="media pull-left">
+                  <a class="text-primary" href="#">Username</a>
+                  <p class="inbox-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  <span class="media-date">2 days ago</span>
+              </div>
+              </td>
+          </tr>
+            <tr href="#">
+              <td>
+                <div>
+                  <input type="checkbox" name="approve[]" value="1" class="mail-checkbox">
+                </div>
+              </td>
+            <td>
+              <a href="#"><img align="left" class="profile-img mr-3 rounded" src="https://via.placeholder.com/40x40" alt=""></a>
+            </td>
+              <td>
+
+                <div class="media pull-left">
+                  <a class="text-primary" href="#">Username</a>
+                  <p class="inbox-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+                  <span class="media-date">2 days ago</span>
+              </div>
+              </td>
+          </tr>
+            <tr href="#">
+              <td>
+                <div>
+                  <input type="checkbox" name="approve[]" value="1" class="mail-checkbox">
+                </div>
+              </td>
+            <td>
+              <a href="#"><img align="left" class="profile-img mr-3 rounded" src="https://via.placeholder.com/40x40" alt=""></a>
+            </td>
+              <td>
+
+                <div class="media pull-left">
+                  <a class="text-primary" href="#">Username</a>
+                  <p class="inbox-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. </p>
+                  <span class="media-date">4 days ago</span>
+              </div>
+              </td>
+          </tr>
+          <tr href="#">
+            <td>
+              <div>
+                <input type="checkbox" name="approve[]" value="1" class="mail-checkbox">
+              </div>
+            </td>
+          <td>
+            <a href="#"><img align="left" class="profile-img mr-3 rounded" src="https://via.placeholder.com/40x40" alt=""></a>
+          </td>
+            <td>
+
+              <div class="media pull-left">
+                <a class="text-primary" href="#">Username</a>
+                <p class="inbox-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. </p>
+                <span class="media-date">4 days ago</span>
+            </div>
+            </td>
+        </tr>         
+        </tbody>
+        </table>
+        </div>
+        <!--End of All Messages-->
+        <!--Here is the start of all Sent Messages-->
+        <div class="tab-pane fade p-3" id="nav-sent" role="tabpanel" aria-labelledby="nav-sent-tab">
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <input type="checkbox" name="approve[]" value="1" class="mail-checkbox">
+                </td>
+                <td>
+                  <img align="left" class="profile-img mr-3 rounded" src="https://via.placeholder.com/40x40" alt="">
+                </td>
+                <td> 
+                  {% if messages %}
+                  {% for message in messages %}
+                  <div class="media pull-left">
+                      <a class="text-primary" href="#">{{message.sender}}</a>
+                      <td class="inbox-summary">{{ message.text }}</td>
+                      <span class="media-date"> {{ message.timestamp }}</span>                   
+                  </div>
+                  {% endfor %}
+                  {% else %}
+                  <div class="media pull-right" >
+                    <p class="inbox-summary">No messages found.</p>                  
+                  </div>
+                  {% endif %}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          
+        </div>
+        <!--End of Sent Messages-->
+      </div>
+    <!--End of Message List-->
+    <ul>
+      <div class="btn-group " align="right">
+          <a class="btn btn-sm btn-default"><i class="fa fa-angle-left"></i></a>
+          <a class="btn btn-sm btn-default"><i class="fa fa-angle-right"></i></a>
+      </div>
+  </ul>
+    </div>
+  <!-- Inbox End -->
+  </div>
+  <!-- End of main section -->
+  <!-- This script is needed for select all checkboxes to function -->
+  <script type="text/javascript"> 
+    function do_this(){
+      var checkboxes = document.getElementsByName('approve[]');
+      var button = document.getElementById('toggle');
+
+      if(button.value == 'select'){
+          for (var i in checkboxes){
+              checkboxes[i].checked = 'FALSE';
+          }
+          button.value = 'deselect'
+      }else{
+          for (var i in checkboxes){
+              checkboxes[i].checked = '';
+          }
+          button.value = 'select';
+      }
+  }
+  </script>
+
+ <!-- This JavaScript/jQuery script is used to handle form submission -->
+<script>
+  $(function() {
+      $('#sendButton').click(function() {
+          var recipientUsername = $('#recipientUsername').val();
+          var messageText = $('#messageText').val();
+          $.ajax({
+              type: 'POST',
+              url: '/send_message',
+              data: $('#sendForm').serialize(),
+              success: function() {
+                  $('#sendModal').modal('hide');
+              }
+          });
+      });
+  });
+</script>
+
+  <style>
+  #nav-all-tab, #nav-sent-tab {
+    color: white;
+    font-size: 13.5px;
+    font-weight: bold;
+  }
+  #nav-all-tab:hover, #nav-all-tab.active  {
+    color: black;
+    font-size: 13.5px;
+    font-weight: bold;
+  }
+
+  #nav-sent-tab:hover, #nav-sent-tab.active {
+    color: black;
+    font-size: 13.5px;
+    font-weight: bold;
+  }
+  #basic_checkbox, #trash_button, #send_button{
+    display: inline-block;
+    margin-left: 10px;
+  }
+  #container{
+    text-align: center;
+  }
+
+  .table-inbox .media {
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+  }
+
+  .table-inbox .media .text-primary {
+    margin: 0px;
+    font-size: 14px;
+    line-height: normal;
+  }
+
+  .text-primary {
+    font-weight: bold;
+  }
+
+
+  .table-inbox .media-date, .table-inbox .media-m{
+    font-size: 11px;
+    color: #999;
+    position: absolute;
+    right: 10px;
+  }
+
+  .table-inbox .media-date {
+    top: 0px;
+  }
+
+  .table-inbox .inbox-summary {
+    margin: 0px 110px 0px 0px;
+  }
+
+  </style>
+
+{% endblock %}

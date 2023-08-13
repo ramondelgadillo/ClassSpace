@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <!-- Start of Search Results - Ryan Randazzo -->
+<!-- Column for search results -->
+<div class="col-md-8 col-lg-6 vstack gap-4">
+  <!-- Card container for search bar -->
+  <div class="card mb-3">
+    <!-- Header for search bar -->
+    <div class="card-header" style="background-color: #003153;">
+      <!-- Search bar heading -->
+      <h3 style="color:#ffffff;">Search Reviews</h3>
+    </div>
+    
+
+
+
+      
+      <form method="POST">
+        {{ form.hidden_tag() }}
+        
+
+        {{ form.prof_rev(class="form-control", placeholder="Search by Professor") }}
+
+        {{ form.submit(class="btn btn-outline-secondary") }}
+      </form>
+      
+  <!-- Card container for displaying search results -->
+  <div class="card">
+    <!-- Card body container for search result information -->
+    <div class="card-body">
+      <div class="media">
+        <div class="media-body">
+          <!-- Displays name of searched item-->
+          
+          {% if revs != "" %}
+          <h5 class="mt-0">{{ prof }}</h5>
+        
+          {% for rev in revs %}
+            {% if loop.index % 3 == 1 %} {# start a new row after every 3rd card #}
+              <div class="row">
+            {% endif %}
+            <div class="col-md-4 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <h6 class="card-title">Title: {{ rev.Title }}</h6>
+                  <p class="card-text">Review: {{ rev.Review }}</p>
+                  <p class="card-text">Rating: {{ rev.Rating }}</p>
+                  <p class="card-text">Difficulty: {{ rev.Difficulty }}</p>
+                  <p class="card-text">Would take again?: {{ rev.Would_take_again }}</p>
+                </div>
+              </div>
+            </div>
+            {% if loop.index % 3 == 0 or loop.last %} {# end the row after every 3rd card or if it's the last card #}
+              </div>
+            {% endif %}
+          {% endfor %}
+        {% else %}
+          <p> Sorry, couldn't find what you were looking for. </p>
+        {% endif %}
+        
+
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End of Search Results -->
+
+
+{% endblock %}

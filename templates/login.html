@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!-- Ryan: created the html format -->
+<html>
+<head>
+  <!-- Title for the Login Page -->
+  <title>ClassSpace - Login</title>
+  
+  <!-- CSS from Bootstrap CDN -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
+  <!-- Custom styles for the Login Page -->
+  <style>
+    /* Set background color to dark blue */
+    body {
+      background-color: #003153;
+    }
+    
+    /* Change text color to white */
+    .text-primary {
+      color: #ffffff !important;
+    }
+    
+    /* Customize the look of the submit button */
+    .btn-primary {
+      background-color: blue !important;
+      border-color: blue !important;
+      color: #ffffff !important;
+    }
+  </style>
+</head>
+<body>
+  <!-- Container for the Login Form -->
+  <div class="container mt-5">
+    <!-- Heading for the Login Page -->
+    <h1 class="text-center text-primary"><img src="/static/images/ClassSpaceLogo_232x100.png" alt="ClassSpace"></h1>
+    <h2 class="text-center mb-4 text-primary">Login</h2>
+    
+    <!-- Row for the Login Form -->
+    <!-- Kenny: add functionality to form, and linking -->
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <!-- Login Form -->
+        <form action="/login" method="POST">  <!-- specify where the form will return back to (where the action specify), methods is POST -->
+          <!-- Form Group for the username input -->
+          <div class="form-group">
+            <!-- Label for the Email input -->
+            <label for="username" class="text-primary">Email:</label>
+            <!-- Input for the username -->
+            <input type="text" class="form-control" id="username" name="email">
+          </div>
+          
+          <!-- Form Group for the password input -->
+          <div class="form-group">
+            <!-- Label for the password input -->
+            <label for="password" class="text-primary">Password:</label>
+            <!-- Input for the password -->
+            <input type="password" class="form-control" id="password" name="password">
+          </div>
+          
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        </form>
+        
+        <!-- Link to the Sign Up Page -->
+        <p class="text-center mt-3 text-primary">Don't have an account? <a href="{{ url_for('signup') }}"  class="text-primary">Sign up</a></p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

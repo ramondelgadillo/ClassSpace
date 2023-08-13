@@ -1,0 +1,369 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Ramon Delgadillo did all of rating page -->
+
+<div role="main" class="col-sm-9">
+  <div class="d-flex align-items-center p-3 my-3 text-white-50 rounded shadow-sm" style="background-color: #003153;">
+    <div>
+      <h4 class="mb-0 text-white" style="margin: 40px;">Rate a Professor</h4>
+    </div>
+  </div>
+    <form method="POST">
+      <div class="card">
+        <div class="card-body">
+          <div class="media">
+            <div class="card-body">
+
+              <div class="card-body">
+                <h4 class="mt-0">Select a Professor</h4>
+                <div class="col-md-4">
+                  <!-- Ramon: Here is the select search drop down menu to look up professors-->
+                  <!-- Ryan: Changed to use specific user input -->
+                  <label for="professor">Select a professor:</label>
+                  <input type="text" class="form-control" name="professor" placeholder="Enter professor name" required>
+
+                </div>
+              </div>
+
+              <div class="card-footer text-muted"></div>
+
+              <div class="card-body">
+                <h4 class="mt-0">Write a Review</h4>
+                <div class="w-100 py-1 border-0">               
+                  <textarea data-autoresize="" class="form-control pe-4 bg-light" rows="1" name="title" placeholder="Title"></textarea>
+                </div>
+                <div class="w-100 py-1 border-0">
+                  <textarea data-autoresize="" name="content" class="form-control pe-4 bg-light" rows="9" placeholder="What do you want other students to know about this professor?"></textarea>
+                </div>
+              </div>
+
+          <div class="card-footer text-muted"></div>
+
+          <!-- Ramon: Difficulty of professor choices -->
+
+          <div class="card-body">
+            <div class="card-body">
+              <h4 class="mt-0">How difficult was this professor?</h4>        
+                <label for="very-easy">
+                <input type="radio" name="difficulty" class="very-easy" id="very-easy" value="Very Easy" /> 
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>emoticon-cool</title><path d="M3.22,7.22C4.91,4.11 8.21,2 12,2C15.79,2 19.09,4.11 20.78,7.22L20,8H4L3.22,7.22M21.4,8.6C21.78,9.67 22,10.81 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12C2,10.81 2.22,9.67 2.6,8.6L4,10H5C5,11.38 7.12,12.5 8.5,12.5C9.88,12.5 11.25,11.38 11.25,10H12.75C12.75,11.38 14.12,12.5 15.5,12.5C16.88,12.5 19,11.38 19,10H20L21.4,8.6M16.19,15.42L14.77,14C14.32,14.72 13.25,15.23 12,15.23C10.75,15.23 9.68,14.72 9.23,14L7.81,15.42C8.71,16.5 10.25,17.23 12,17.23C13.75,17.23 15.29,16.5 16.19,15.42Z" /></svg>Very Easy
+                </label>
+
+                <br/>
+          
+                <label for="easy">
+                <input type="radio" name="difficulty" class="easy" id="easy" value="Easy" /> 
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>emoticon-excited</title><path d="M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2M8.88,7.82L11,9.94L9.94,11L8.88,9.94L7.82,11L6.76,9.94L8.88,7.82M12,17.5C9.67,17.5 7.69,16.04 6.89,14H17.11C16.31,16.04 14.33,17.5 12,17.5M16.18,11L15.12,9.94L14.06,11L13,9.94L15.12,7.82L17.24,9.94L16.18,11Z" /></svg>Easy
+                </label>
+
+                <br/>
+          
+                <label for="average">
+                <input type="radio" name="difficulty" class="average" id="average" value="Average" /> 
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>emoticon-neutral</title><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M7,9.5A1.5,1.5 0 0,1 8.5,8A1.5,1.5 0 0,1 10,9.5A1.5,1.5 0 0,1 8.5,11A1.5,1.5 0 0,1 7,9.5M16,16H8V14H16V16M15.5,11A1.5,1.5 0 0,1 14,9.5A1.5,1.5 0 0,1 15.5,8A1.5,1.5 0 0,1 17,9.5A1.5,1.5 0 0,1 15.5,11Z" /></svg>Average
+                </label>
+
+                <br/>
+          
+                <label for="difficult">
+                <input type="radio" name="difficulty" class="difficult" id="difficult" value="Difficult" /> 
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>emoticon-frown</title><path d="M12 2C6.47 2 2 6.5 2 12S6.47 22 12 22C17.5 22 22 17.5 22 12S17.5 2 12 2M15.5 8C16.33 8 17 8.67 17 9.5S16.33 11 15.5 11 14 10.33 14 9.5 14.67 8 15.5 8M8.5 8C9.33 8 10 8.67 10 9.5S9.33 11 8.5 11 7 10.33 7 9.5 7.67 8 8.5 8M6.89 17C7.69 14.96 9.67 13.5 12 13.5S16.31 14.96 17.11 17H6.89Z" /></svg>Difficult
+                </label>
+
+                <br/>
+          
+                <label for="very-difficult">
+                <input type="radio" name="difficulty" class="very-difficult" id="very-difficult" value="Very Difficult" /> 
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>emoticon-cry</title><path d="M5.14,17.57C5.14,16.5 6.32,14.5 7.57,12.81C8.82,14.5 10,16.5 10,17.57A2.43,2.43 0 0,1 7.57,20C6.23,20 5.14,18.91 5.14,17.57M22,12A10,10 0 0,1 12,22C11.08,22 10.18,21.86 9.33,21.63C10.9,20.95 12,19.39 12,17.57C12,17.12 11.89,16.6 11.69,16C11.79,16 11.89,16 12,16C13.25,16 14.32,16.5 14.77,17.23L16.19,15.81C15.29,14.72 13.75,14 12,14C11.59,14 11.19,14.04 10.81,14.12C10.38,13.36 9.85,12.53 9.19,11.63L8.71,11C9.42,10.87 10,10.23 10,9.5C10,8.7 9.3,8 8.5,8C7.7,8 7,8.7 7,9.5C7,9.69 7.04,9.87 7.11,10.04L5.96,11.63C4.4,13.75 3.5,15.5 3.23,16.81C2.45,15.38 2,13.74 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12M17,9.5C17,8.7 16.3,8 15.5,8C14.7,8 14,8.7 14,9.5C14,10.3 14.7,11 15.5,11C16.3,11 17,10.3 17,9.5Z" /></svg>Very Difficult
+                </label>                     
+            </div>
+            </div>      
+            
+            <!-- Ramon: Professor out of class help -->
+
+            <div class="card-body">
+              <div class="card-body">
+                <h4 class="mt-0">How often does this professor offer help to students outside of class?</h4>        
+                  <label for="very-easy1">
+                  <input type="radio" name="help" class="very-easy1" id="very-easy1" value="Always" /> 
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 24"><title>square-rounded</title><path d="M8 3H16C18.76 3 21 5.24 21 8V16C21 18.76 18.76 21 16 21H8C5.24 21 3 18.76 3 16V8C3 5.24 5.24 3 8 3Z" /></svg>Always
+                  </label>
+  
+                  <br/>
+            
+                  <label for="easy1">
+                  <input type="radio" name="help" class="easy1" id="easy1" value="Often" /> 
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 24"><title>square-rounded</title><path d="M8 3H16C18.76 3 21 5.24 21 8V16C21 18.76 18.76 21 16 21H8C5.24 21 3 18.76 3 16V8C3 5.24 5.24 3 8 3Z" /></svg>Often
+                  </label>
+  
+                  <br/>
+            
+                  <label for="average1">
+                  <input type="radio" name="help" class="average1" id="average1" value="Sometimes" /> 
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 24"><title>square-rounded</title><path d="M8 3H16C18.76 3 21 5.24 21 8V16C21 18.76 18.76 21 16 21H8C5.24 21 3 18.76 3 16V8C3 5.24 5.24 3 8 3Z" /></svg>Sometimes
+                  </label>
+  
+                  <br/>
+            
+                  <label for="difficult1">
+                  <input type="radio" name="help" class="difficult1" id="difficult1" value="Rarely" /> 
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 24"><title>square-rounded</title><path d="M8 3H16C18.76 3 21 5.24 21 8V16C21 18.76 18.76 21 16 21H8C5.24 21 3 18.76 3 16V8C3 5.24 5.24 3 8 3Z" /></svg>Rarely
+                  </label>
+  
+                  <br/>
+            
+                  <label for="very-difficult1">
+                  <input type="radio" name="help" class="very-difficult1" id="very-difficult1" value="Never" /> 
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 24"><title>square-rounded</title><path d="M8 3H16C18.76 3 21 5.24 21 8V16C21 18.76 18.76 21 16 21H8C5.24 21 3 18.76 3 16V8C3 5.24 5.24 3 8 3Z" /></svg>Never
+                  </label>                     
+              </div>
+              </div>
+
+              <div class="card-footer text-muted"></div>
+
+              <!-- Ramon: Professor Attendance -->
+
+              <div class="card-body">
+                <h4 class="mt-0">Was attendance mandatory?</h4>
+                <label for="yes1">
+                  <input type="radio" name="attendance" class="yes1" id="yes1" value="yes" />
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>check-circle</title><path d="M12 2C6.5 2 2 6.5 2 12S6.5 22 12 22 
+                    22 17.5 22 12 17.5 2 12 2M10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z" /></svg>
+                </label>
+
+                <label for="no1">
+                  <input type="radio" name="attendance" class="no1" id="no1" value="no" />
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>close-circle</title><path d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z" /></svg>
+                </label>
+              </div>              
+
+          <div class="card-footer text-muted"></div>
+            <!-- Ramon: Take professor again -->
+              <div class="card-body">
+                <h4 class="mt-0">Would you take this professor again?</h4>
+                <label for="yes">
+                  <input type="radio" name="take_again" class="yes" id="yes" value="yes" />
+                  <svg viewBox="0 0 24 24"><path d="M23,10C23,8.89 22.1,8 21,8H14.68L15.64,3.43C15.66,3.33 15.67,3.22 15.67,3.11C15.67,2.7 15.5,2.32 15.23,2.05L14.17,1L7.59,7.58C7.22,7.95 7,8.45 7,9V19A2,2 0 0,0 9,21H18C18.83,21 19.54,20.5 19.84,19.78L22.86,12.73C22.95,12.5 23,12.26 23,12V10M1,21H5V9H1V21Z" /></svg>
+                </label>
+
+                <label for="no">
+                  <input type="radio" name="take_again" class="no" id="no" value="no" />
+                  <svg viewBox="0 0 24 24"><path d="M19,15H23V3H19M15,3H6C5.17,3 4.46,3.5 4.16,4.22L1.14,11.27C1.05,11.5 1,11.74 1,12V14A2,2 0 0,0 3,16H9.31L8.36,20.57C8.34,20.67 8.33,20.77 8.33,20.88C8.33,21.3 8.5,21.67 8.77,21.94L9.83,23L16.41,16.41C16.78,16.05 17,15.55 17,15V5C17,3.89 16.1,3 15,3Z" /></svg>
+                </label>
+              </div>
+
+              <div class="card-footer text-muted"></div>
+            
+
+          <div class="card-footer text-muted"></div>
+          <!-- Ramon: Rate professor -->
+          <div class="card-body">
+            <h4 class="mt-0">Rate your Professor</h4>            
+              <label for="awful">
+              <input type="radio" name="rating" class="awful" id="awful" value="1" />
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>emoticon-dead</title><path d="M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2M6.76,8.82L7.82,7.76L8.88,8.82L9.94,7.76L11,8.82L9.94,9.88L11,10.94L9.94,12L8.88,10.94L7.82,12L6.76,10.94L7.82,9.88L6.76,8.82M6.89,17.5C7.69,15.46 9.67,14 12,14C14.33,14 16.31,15.46 17.11,17.5H6.89M17.24,10.94L16.18,12L15.12,10.94L14.06,12L13,10.94L14.06,9.88L13,8.82L14.06,7.76L15.12,8.82L16.18,7.76L17.24,8.82L16.18,9.88L17.24,10.94Z" /></svg>
+              </label>
+        
+              <label for="bad">
+              <input type="radio" name="rating" class="bad" id="bad" value="2" />
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>emoticon-sad</title><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M7,9.5C7,8.7 7.7,8 8.5,8C9.3,8 10,8.7 10,9.5C10,10.3 9.3,11 8.5,11C7.7,11 7,10.3 7,9.5M14.77,17.23C14.32,16.5 13.25,16 12,16C10.75,16 9.68,16.5 9.23,17.23L7.81,15.81C8.71,14.72 10.25,14 12,14C13.75,14 15.29,14.72 16.19,15.81L14.77,17.23M15.5,11C14.7,11 14,10.3 14,9.5C14,8.7 14.7,8 15.5,8C16.3,8 17,8.7 17,9.5C17,10.3 16.3,11 15.5,11Z" /></svg>
+              </label>
+        
+              <label for="ok">
+              <input type="radio" name="rating" class="ok" id="ok" value="3" />
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>emoticon-neutral</title><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M7,9.5A1.5,1.5 0 0,1 8.5,8A1.5,1.5 0 0,1 10,9.5A1.5,1.5 0 0,1 8.5,11A1.5,1.5 0 0,1 7,9.5M16,16H8V14H16V16M15.5,11A1.5,1.5 0 0,1 14,9.5A1.5,1.5 0 0,1 15.5,8A1.5,1.5 0 0,1 17,9.5A1.5,1.5 0 0,1 15.5,11Z" /></svg>
+              </label>
+        
+              <label for="good">
+              <input type="radio" name="rating" class="good" id="good" value="4" />
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>emoticon-happy</title><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M7,9.5C7,8.7 7.7,8 8.5,8C9.3,8 10,8.7 10,9.5C10,10.3 9.3,11 8.5,11C7.7,11 7,10.3 7,9.5M12,17.23C10.25,17.23 8.71,16.5 7.81,15.42L9.23,14C9.68,14.72 10.75,15.23 12,15.23C13.25,15.23 14.32,14.72 14.77,14L16.19,15.42C15.29,16.5 13.75,17.23 12,17.23M15.5,11C14.7,11 14,10.3 14,9.5C14,8.7 14.7,8 15.5,8C16.3,8 17,8.7 17,9.5C17,10.3 16.3,11 15.5,11Z" /></svg>
+              </label>
+        
+              <label for="great">
+              <input type="radio" name="rating" class="great" id="great" value="5" />
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>emoticon-excited</title><path d="M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2M8.88,7.82L11,9.94L9.94,11L8.88,9.94L7.82,11L6.76,9.94L8.88,7.82M12,17.5C9.67,17.5 7.69,16.04 6.89,14H17.11C16.31,16.04 14.33,17.5 12,17.5M16.18,11L15.12,9.94L14.06,11L13,9.94L15.12,7.82L17.24,9.94L16.18,11Z" /></svg>
+              </label>                     
+          </div>
+
+        <div class="card-footer text-muted"></div>
+        
+          <div>
+            <button type="submit" class="btn btn-dark btn-rounded btn-md" style="float: right; background-color: #003153;">Post Review</button>
+          </div>                            
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+
+</div>
+
+
+<!-- Ramon Delgadillo: These scripts are needed for the select professor dropdown menu -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<script>
+  $('.select2').select2();
+</script>
+
+<style>
+
+.rating {
+  background-color: rgb(242, 242, 242);
+  padding: 0.4rem 0.4rem 0.1rem 0.4rem;
+  border-radius: 2.2rem;
+}
+
+.take_again, .attendance {
+  background-color: rgb(242, 242, 242);
+  padding: 0.4rem 0.4rem 0.1rem 0.4rem;
+  border-radius: 2.2rem;
+}
+
+
+svg {
+  fill: rgba(0, 0, 16, 0.8);
+  height: 3.6rem;
+  width: 3.6rem;
+  margin: 0.2rem;
+} 
+
+input[type="radio"] + svg {
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+
+input + svg {
+  cursor: pointer;
+}
+
+input[class="great"]:hover + svg,
+input[class="great"]:checked + svg,
+input[class="great"]:focus + svg {
+  fill: rgb(0, 109, 217);
+}
+
+input[class="very-easy"]:hover + svg,
+input[class="very-easy"]:checked + svg,
+input[class="very-easy"]:focus + svg {
+  fill: rgb(0, 109, 217);
+}
+
+input[class="very-easy1"]:hover + svg,
+input[class="very-easy1"]:checked + svg,
+input[class="very-easy1"]:focus + svg {
+  fill: rgb(0, 109, 217);
+}
+
+
+input[class="good"]:hover + svg,
+input[class="good"]:checked + svg,
+input[class="good"]:focus + svg {
+  fill: rgb(0, 204, 79);
+}
+
+input[class="easy"]:hover + svg,
+input[class="easy"]:checked + svg,
+input[class="easy"]:focus + svg {
+  fill: rgb(0, 204, 79);
+}
+
+input[class="easy1"]:hover + svg,
+input[class="easy1"]:checked + svg,
+input[class="easy1"]:focus + svg {
+  fill: rgb(0, 204, 79);
+}
+
+input[class="yes"]:hover + svg,
+input[class="yes"]:checked + svg,
+input[class="yes"]:focus + svg {
+  fill: rgb(0, 204, 79);
+}
+
+input[class="yes1"]:hover + svg,
+input[class="yes1"]:checked + svg,
+input[class="yes1"]:focus + svg {
+  fill: rgb(0, 204, 79);
+}
+
+
+input[class="ok"]:hover + svg,
+input[class="ok"]:checked + svg,
+input[class="ok"]:focus + svg {
+  fill: rgb(232, 214, 0);
+}
+
+input[class="average"]:hover + svg,
+input[class="average"]:checked + svg,
+input[class="average"]:focus + svg {
+  fill: rgb(232, 214, 0);
+}
+
+input[class="average1"]:hover + svg,
+input[class="average1"]:checked + svg,
+input[class="average1"]:focus + svg {
+  fill: rgb(232, 214, 0);
+}
+
+input[class="bad"]:hover + svg,
+input[class="bad"]:checked + svg,
+input[class="bad"]:focus + svg {
+  fill: rgb(229, 132, 0);
+}
+
+input[class="difficult"]:hover + svg,
+input[class="difficult"]:checked + svg,
+input[class="difficult"]:focus + svg {
+  fill: rgb(229, 132, 0);
+}
+
+input[class="difficult1"]:hover + svg,
+input[class="difficult1"]:checked + svg,
+input[class="difficult1"]:focus + svg {
+  fill: rgb(229, 132, 0);
+}
+
+input[class="awful"]:hover + svg,
+input[class="awful"]:checked + svg,
+input[class="awful"]:focus + svg {
+  fill: rgb(239, 42, 16);
+}
+
+input[class="very-difficult"]:hover + svg,
+input[class="very-difficult"]:checked + svg,
+input[class="very-difficult"]:focus + svg {
+  fill: rgb(239, 42, 16);
+}
+
+input[class="very-difficult1"]:hover + svg,
+input[class="very-difficult1"]:checked + svg,
+input[class="very-difficult1"]:focus + svg {
+  fill: rgb(239, 42, 16);
+}
+
+input[class="no"]:hover + svg,
+input[class="no"]:checked + svg,
+input[class="no"]:focus + svg {
+  fill: rgb(239, 42, 16);
+}
+
+input[class="no1"]:hover + svg,
+input[class="no1"]:checked + svg,
+input[class="no1"]:focus + svg {
+  fill: rgb(239, 42, 16);
+}
+
+
+.great, .yes, .yes1, .no, .no1, .good, .ok, .bad, .awful,
+.very-easy, .very-easy1, .easy, .easy1, .average, .average1, .difficult, .difficult1, .very-difficult, .very-difficult1[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+
+</style>
+
+{% endblock %}

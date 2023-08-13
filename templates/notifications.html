@@ -1,0 +1,144 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+
+
+<!-- Ramon Delgadillo did all of notifications -->
+<div class="col-md-8 col-lg-6 vstack gap-4">
+  <div class="card mb-3">
+    <div class="card-header" style="background-color: #003153;">
+      <h3 style="color:#ffffff;">Notifications <i class="fa fa-bell"></i>
+      </h3>
+    </div>
+    <div class="card">
+
+      <div class="notification-content">
+        <div class="notifications">
+          <div class="list-notifications">
+            <div class="user-img">
+              <img src="https://via.placeholder.com/50x50" alt="user">
+            </div>
+            <div class="user-details">
+              <p>
+                <a class="text-username" href="#">Username</a> commented on your post
+              </p>
+              <p class="text-muted">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde, dolorem. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde, dolorem.</p>
+              <p class="text-muted">
+                <small>18 mins ago</small>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="notifications">
+          <div class="list-notifications">
+            <div class="user-img">
+              <img src="https://via.placeholder.com/50x50" alt="user">
+            </div>
+            <div class="user-details">
+              <p>
+                <a class="text-username" href="#">Username</a> liked your post
+              </p>
+              <p class="text-muted">
+                <small>2 hours ago</small>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="notifications">
+          <div class="list-notifications">
+            <div class="user-img">
+              <img src="https://via.placeholder.com/50x50" alt="user">
+            </div>
+            <div class="user-details">
+              <p>
+                <a class="text-username" href="#">Username</a> followed you
+              </p>
+              <p class="text-muted">
+                <small>3 hours ago</small>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="notifications">
+          <div class="list-notifications">
+            <div class="user-img">
+              <img src="https://via.placeholder.com/50x50" alt="user">
+            </div>
+            <div class="user-details">
+              <p>
+                <a class="text-username" href="#">Username</a> commented on your post
+              </p>
+              <p class="text-muted">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde, dolorem.</p>
+              <p class="text-muted">
+                <small>8 hours ago</small>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="notifications">
+          <div class="list-notifications">
+            <div class="user-img">
+              <img src="https://via.placeholder.com/50x50" alt="user">
+            </div>
+            <div class="user-details">
+              <p>
+                <a class="text-username" href="#">Username</a> liked your post
+              </p>
+              <p class="text-muted">
+                <small>13 hours ago</small>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-3 px-2 py-0 mb-3" style="text-align: center">
+        <a class="btn btn-sm btn-primary-soft" href="#!">Load more activity</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+
+  .notifications {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin-bottom: 7px;
+    background: #fff;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .notifications .list-notifications {
+    display: flex;
+  }
+
+  .notifications .list-notifications .user-img img {
+    height: 48px;
+    width: 48px;
+    border-radius: 50px;
+    margin-right: 20px;
+  }
+
+  .notifications .list-notifications .user-details p {
+    margin-bottom: 3px;
+    line-height: 1.2;
+  }
+
+  .text-username {
+    margin: 0px;
+    font-size: 17px;
+    line-height: normal;
+    font-weight: bold;
+    color: rgb(79, 79, 79);
+  }
+  
+</style> 
+
+{% endblock %}

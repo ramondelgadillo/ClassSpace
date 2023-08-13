@@ -1,0 +1,235 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+      
+
+      <!-- Kevin Cordray: created the profile layout and html code -->
+      <!-- Main content START -->
+      <div class="col-md-8 col-lg-6 vstack gap-4">
+        
+        <!-- Card feed item START -->
+        <div class="card" style="background-color: #003153;">
+          <!-- Card header START -->
+          <div class="card-header border-0 pb-0">
+            <div class="card-header border-0 pb-0" style="background-color: #003153; height: 6rem"></nav>
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="d-flex align-items-center">
+                
+                <!-- Profile Picture -->
+                <div class="avatar avatar-story me-2">
+                  <img src="https://via.placeholder.com/100x100" class="mr-3" alt="...">
+                </div>
+                <!-- Info -->
+                <div>
+                  <div class="nav nav-divider">
+                    <h6 class="nav-item card-title mb-0"> <a href="#!" style="color:white; font-size:200%;"> {{session['username']}} </a></h6>
+                  </div>
+                  <p class="mb-0 small" style="color:white" >Just Now</p>
+
+
+                  <!-- STUFF FOR FOLLOWING -->
+                  <!-- STUFF for the user to not follow themselves -->
+
+                  <form action="/userprofile" method="POST">
+                    {% if session['uid'] != session['uid']%}
+                      <button name="follow" type="button" class="card" style="float: left; margin: 10px; ">Follow</button>
+
+                      <button name="unfollow" type="button" class="card" style="float: left; margin: 10px; ">Unfollow</button>
+                  
+                      <button name="report" type="button" class="card" style="float: left; margin: 10px; ">Report</button>
+
+                      <button name="message" type="button" class="card" style="float: left; margin: 10px; ">Message</button>
+                    {% endif %}
+
+                  </form>
+
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+          
+             
+          <!-- Card header END -->
+          <!-- Card body START -->
+          <div class="card-body">
+            <p class="mb-0 small" style="color:white" >Bio: </p>
+            <p class="mb-0 small" style="color:rgb(209, 209, 209)" >{{desc}} </p>
+            <p class="mb-0 small" style="color:rgb(11, 0, 112)" > .</p>
+            
+          
+            
+
+
+              
+              <!-- Start of main section -->
+<main class="card">
+        <div class="card-body" >
+          <div class="media">
+            <img src="https://via.placeholder.com/50x50" style="color:black; margin: 10px;" aria-hidden="true"></i><span>Badges</span>
+            <div class="media-body">
+              
+              <!-- Main Badge content -->
+              <img src="https://via.placeholder.com/50x50" class="mr-3" alt="...">
+              <img src="https://via.placeholder.com/50x50" class="mr-3" alt="...">
+              <img src="https://via.placeholder.com/50x50" class="mr-3" alt="...">
+              <img src="https://via.placeholder.com/50x50" class="mr-3" alt="...">
+              <img src="https://via.placeholder.com/50x50" class="mr-3" alt="...">
+              <img src="https://via.placeholder.com/50x50" class="mr-3" alt="...">
+              
+            </div>
+          </div>
+        </div>
+        <div class="card-footer text-muted">
+          
+        </div>
+
+        <div class="card-body">
+          <div class="media">
+            <img src="https://via.placeholder.com/50x50" style="color:black; margin: 10px;" aria-hidden="true"></i><span>Top Review</span>
+            <div class="media-body">
+              
+              <!-- Review content -->
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card-footer text-muted">
+        
+        <!-- User Posts -->
+          <div class="row">
+            {% for review in urevs %}
+              <div class="col-md-4 mb-4">
+                <div class="card">
+                  <div class="card-body">
+                    <h6 class="card-title" style="font-size: 16px">{{ review.title }}</h6>
+                    <p class="card-text" style="font-size: 14px; line-height: 1.2">{{ review.content }}</p>
+                    <p class="card-text mb-1" style="font-size: 14px"><strong>Quality:</strong> {{ review.quality }}</p>
+                    <p class="card-text mb-1" style="font-size: 14px"><strong>Social:</strong> {{ review.social }}</p>
+                    <p class="card-text mb-1" style="font-size: 14px"><strong>Take Again?:</strong> {{ review.take_again }}</p>
+                    {% if review.professor %}
+                    <p class="card-text mb-1" style="font-size: 14px"><strong>Professor:</strong> {{ review.professor }}</p>
+                    {% endif %}
+                    {% if review.course %}
+                    <p class="card-text mb-1" style="font-size: 14px"><strong>Course:</strong> {{ review.course }}</p>
+                    {% endif %}
+                    {% if review.attendance %}
+                    <p class="card-text mb-1" style="font-size: 14px"><strong>Attendance:</strong> {{ review.attendance }}</p>
+                    {% endif %}
+                    {% if review.difficulty %}
+                    <p class="card-text mb-1" style="font-size: 14px"><strong>Difficulty:</strong> {{ review.difficulty }}</p>
+                    {% endif %}
+                    {% if review.homework %}
+                    <p class="card-text mb-1" style="font-size: 14px"><strong>Homework Load:</strong> {{ review.homework }}</p>
+                    {% endif %}
+                    {% if review.help %}
+                    <p class="card-text mb-1" style="font-size: 14px"><strong>Helpfulness:</strong> {{ review.help }}</p>
+                    {% endif %}
+                    {% if review.campus %}
+                    <p class="card-text mb-1" style="font-size: 14px"><strong>Campus:</strong> {{ review.campus }}</p>
+                    {% endif %}
+                    {% if review.rating %}
+                    <p class="card-text mb-1" style="font-size: 14px"><strong>Overall Rating:</strong> {{ review.rating }}</p>
+                    {% endif %}
+                    <p class="card-text mb-0 text-muted" style="font-size: 12px">{{ review.timestamp }}</p>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+          <!-- End of User Posts  -->
+        </div>
+      </div>
+    </div>
+    <!-- End of main feed section -->
+    
+            <!-- Add comment MIGHT REMOVE 
+            <div class="d-flex mb-3">
+              
+              <div class="avatar avatar-xs me-2">
+                <a href="#!"> <img class="avatar-img rounded-circle" src="https://via.placeholder.com/40x40" alt=""></a>
+              </div>
+              
+              <form class="w-100">
+                <textarea data-autoresize="" class="form-control pe-4 bg-light" style="color:black; margin: 10px;" rows="1" placeholder="Add a comment..."></textarea>
+              </form>
+            </div class="card-header border-0 pb-0"> -->
+          </div>
+        </div>
+      </li>
+
+      <!-- Friends List START -->
+<div class="col-lg-3">
+  <div class="row g-4" style="margin-top: 2px;">
+    <!-- Card Random Reviews right Sidebar START - Created by Ramon Delgadillo -->
+    <div class="col-sm-6 col-lg-12">
+      <div class="card">
+        <!-- Card header START -->
+        <div class="card-header pb-0 border-0" style="background-color: #003153">
+          <h5 class="card-title mb-0" style="color: white; margin: 10px;">Followers</h5>
+        </div>
+        <!-- Card header END -->
+        <!-- Card body START -->
+        <div class="card-body">
+          <!-- item -->
+
+          <!-- FOLLOWERS CONTENT STUFF HERE -->
+          <ul class="nav nav-link-secondary flex-column gap-2">
+            <li>
+
+              <!-- show only 4 followers and I know this is ugly but it also refreshes the friend list -->
+              {% set i = 0 %}
+              {% for friend in friendNames %}
+            <div>
+                {% if i <= 3 %}
+                {% set i = i + 1 %}
+                <i class="fa fa-user fa-fw me-3" style="color:black" aria-hidden="true"></i><span> {{ friend }}</span>
+                  {% endif %}
+              {% endfor %}
+            </div>
+            </a>
+            </li> 
+          <!-- Load into follower page -->
+            <div class="d-grid mt-3">
+              <a class="btn btn-sm btn-primary-soft" href="{{ url_for('followers') }}">View more</a>
+              
+            </div>
+        </div>
+        <!-- Card body END -->
+      </div>
+      
+      
+
+
+
+
+
+    </div>
+
+  </div> <!-- Row END -->
+</div>
+<!-- Right sidebar END -->
+</div>
+</div>
+</main>
+</ul>
+</div>
+</div>
+</div>
+</main>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+
+
+
+
+
+
+
+
+{% endblock %}

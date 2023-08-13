@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+
+{% block content %}
+      
+
+      <!-- Kevin Cordray: created the profile layout and html code -->
+      <!-- Main content START -->
+      <div class="col-md-8 col-lg-6 vstack gap-4">
+        
+        <!-- Card feed item START -->
+        <div class="card" style="background-color: #003153;">
+          <!-- Card header START -->
+          <div class="card-header border-0 pb-0">
+            <div class="card-header border-0 pb-0" style="background-color: #003153; height: 6rem"></nav>
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="d-flex align-items-center">
+                <!-- Profile Picture -->
+                <div class="avatar avatar-story me-2">
+                  <img src="https://via.placeholder.com/100x100" class="mr-3" alt="...">
+                </div>
+                <!-- Info -->
+                <div>
+                  <div class="nav nav-divider">
+                    <h6 class="nav-item card-title mb-0"> <a href="#!" style="color:white"> Profile Settings </a></h6>
+                  </div>
+                  <!-- <p class="mb-0 small" style="color:white" >Just Now</p> -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Card header END -->
+          <!-- Card body START -->
+          <div class="card-body">
+            <p class="mb-0 medium" style="color:white; margin: 10px">
+          
+            
+
+
+              
+              <!-- Start of main section -->
+<main class="card">
+        <div class="card-body" >
+          <div class="media">
+            <!-- <img src="https://via.placeholder.com/50x50" class="mr-3" alt="..."> -->
+          
+              <div class="card-body">
+                <div class="media">
+                  <!-- <img src="https://via.placeholder.com/50x50" class="mr-3" alt="..."> -->
+                  <div class="media-body">
+                    <form action="/psettings" method="POST">
+                      <div class="form-group">
+
+                      </div>
+                    <h5 class="mt-0">Profile Picture</h5>
+                    <!-- Review content -->
+                    <img src="https://via.placeholder.com/50x50" class="mr-3" alt="...">
+              <img src="https://via.placeholder.com/50x50" class="mr-3" alt="...">
+              <img src="https://via.placeholder.com/50x50" class="mr-3" alt="...">
+              <img src="https://via.placeholder.com/50x50" class="mr-3" alt="...">
+              <img src="https://via.placeholder.com/50x50" class="mr-3" alt="...">
+              <img src="https://via.placeholder.com/50x50" class="mr-3" alt="...">
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer text-muted">
+          
+        </div>
+
+        <div class="card-body">
+          <div class="media">
+            <!-- <img src="https://via.placeholder.com/50x50" class="mr-3" alt="..."> -->
+            <div class="media-body">
+              <h5 class="mt-0">Dark/Light Mode</h5>
+              <!-- Review content -->
+              {% if darkmode == False %}
+              
+              <input type="checkbox" name="darkmodebutton" class="card" style="float: left; margin: 5px; background-color: #003153; color: white">Dark Mode<br>
+              <!-- <button class="btn btn-default" style="color: #fff" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button> -->
+              {% else %}
+              <input type="checkbox" name="darkmodebutton" class="card" style="float: left; margin: 5px; background-color: #003153; color: white">Light Mode<br>
+              {%endif%}
+          </div>
+        </div>
+        </div>
+        </div>
+        <div class="card-footer text-muted">
+          
+        </div>
+
+        <div class="card-body">
+          <div class="media">
+            <!-- <img src="https://via.placeholder.com/50x50" class="mr-3" alt="..."> -->
+            <div class="media-body">
+              <h5 class="mt-0">Profile Description</h5>
+              <!-- Review content -->
+              
+              <!-- Input for the Username change -->
+              <input class="form-control pe-4 bg-light w-100" placeholder="Description" style="color: #000000; margin: 20px;" rows="4" id="profile_desc" name="profile_desc">
+             
+            </div>
+          </div>
+        </div>
+        <div class="card-footer text-muted">
+
+        </div>
+
+        <div class="card-body">
+          <div class="media">
+            <!-- <img src="https://via.placeholder.com/50x50" class="mr-3" alt="..."> -->
+            <div class="media-body">
+              <h5 class="mt-0">Change Username</h5>
+              <!-- Review content -->
+              <!--<textarea data-autoresize="" class="form-control pe-4 bg-light w-100" name="reply" style="margin-right: 10px;" rows="4" placeholder="Write something about you..." id="profile_desc" name="profile_desc"></textarea>
+            -->
+              <input class="navbar-expand-sm" class="form-control" placeholder="Old Username" style="color: #000000; margin: 20px;" id="old_user" name="old_user">  
+
+              <input class="navbar-expand-sm" class="form-control" style="color: #000000; margin: 20px;" placeholder="New Username" id="new_user" name="new_user">
+              
+              <input class="navbar-expand-sm" class="form-control" placeholder="Verify Password" style="color: #000000; margin: 20px;" id="verr_pass" name="verr_pass">
+
+              </div>
+          </div>
+        </div>
+        <div class="card-footer text-muted">
+
+
+    </div>
+
+    <div class="card-body">
+      <div class="media">
+        <!-- <img src="https://via.placeholder.com/50x50" class="mr-3" alt="..."> -->
+        <div class="media-body">
+          <!-- email content 
+          <h5 class="mt-0">Change Email</h5>
+          
+          <input class="navbar-expand-sm" class="form-control" placeholder="Old Email" style="color: #000000; margin: 20px;" id="old_email" name="old_email">
+          <input class="navbar-expand-sm" class="form-control" placeholder="New Email" style="color: #000000; margin: 20px;" id="new_email" name="new_email">
+          <input class="navbar-expand-sm" class="form-control" placeholder="Verify Password" style="color:#000000; margin: 20px;" id="verr_pass" name="verr_pass">
+        -->
+        </div>
+      
+      </div>
+      
+    </div>
+    
+    <button type="submit" class="card" style="float: left; margin: 10px; background-color: #003153; color: rgb(255, 252, 50) ">Apply</button>
+ </form>
+    <div class="card-footer text-muted">
+
+    <!-- End of main feed section -->
+    
+
+
+</div>
+</div>
+</main>
+</ul>
+</div>
+</div>
+</div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+
+{% endblock %}

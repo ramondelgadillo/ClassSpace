@@ -1,0 +1,352 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <!-- Latest Reviews START - Ramon Delgadillo created the Latest Reviews Middle Section -->
+  <div class="col-md-8 col-lg-6 vstack gap-4">  
+    <div class="card-header pb-1 border-0 gap-1" style="background-color: #003153">
+      <h3 class="card-title mb-1" style="color: white">Latest Reviews</h3>
+    </div>
+    <!-- Card item START -->
+    <div class="card">
+      <!-- Card header START -->
+      <div class="card-header border-0 pb-0">
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center">
+            <!-- Profile Picture -->
+            <div class="profile profile-story me-2">
+              <a href="#!"> <img class="profile-img rounded-circle" src="https://via.placeholder.com/40x40" alt=""> </a>
+            </div>
+            <!-- Review Header -->
+            <div>
+              <div class="nav nav-divider">
+                <h6 class="nav-item card-title mb-0"> <a href="#!" style="color:black"> Username 1 </a></h6>
+              </div>
+              <p class="mb-0 small">Posted 13 hours ago</p>
+            </div>
+            <!-- Review Header END -->
+          </div>
+        </div>
+      </div>
+      <!-- Card header END -->
+      <!-- Card body Review START -->
+      <div class="card-body">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.
+        </p>
+        <!-- Amount of Likes, Dislikes, and Comments for Review -->
+        <ul class="list-inline d-sm-flex my-0 small border-top border-bottom py-1 mb-3">
+          <li class="list-inline-item">
+            <a class="g-color-green" href="#!">
+              <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+              178
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a class="g-color-red" href="#!">
+              <i class="fa fa-thumbs-down" aria-hidden="true"></i>
+              34
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a class="g-color-gray" style="float: right;" href="#!">
+              <i class="fa fa-comments" aria-hidden="true"></i>
+              Comments (40)
+            </a>
+          </li>
+        </ul>
+        
+        <form method="POST">
+          <div class="d-flex mb-3">
+            <!-- Profile Picture -->
+            <div class="profile profile-xs me-2">
+              <a href="#!"> <img class="profile-img rounded-circle" src="https://via.placeholder.com/40x40" alt=""></a>
+            </div>
+            <!-- Comment box  -->
+              <textarea data-autoresize="" class="form-control pe-4 bg-light w-100" name="reply" style="margin-right: 10px;" rows="1" placeholder="Post a comment"></textarea>
+            <ul class="list-inline d-sm-flex my-0 small py-1 mb-3">
+              <li class="list-inline-item">
+                <button type="submit" class="btn btn-primary btn-rounded btn-sm border-0 mb-3" href="#"><i class="fa fa-reply" aria-hidden="true"></i>
+              </li>
+            </ul>           
+          </div>
+        </form>
+        
+        <!-- Comments Section wrap START -->
+        <ul class="comment-wrap list-unstyled">
+          <!-- Comment item START -->
+          <li class="comment-item">
+            <div class="d-flex position-relative">
+              <!-- Profile Picture of User who commented -->
+              <div class="profile profile-xs">
+                <a href="#!"><img class="profile-img rounded-circle" src="https://via.placeholder.com/40x40" alt=""></a>
+              </div>
+              <div class="ms-2">
+                <!-- Comment by User -->
+                <div class="bg-light rounded-start-top-0 p-3 rounded">
+                  <div class="d-flex justify-content-between">
+                    <h6 class="mb-1"> <a href="#!" style="color:black"> User 4 </a></h6>
+                    <small class="ms-2">5hr</small>
+                  </div>
+                  <p class="small mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+                </div>
+              </div>
+            </div>
+          </li>
+          <!-- Comment item END -->
+
+          <!-- Comment item START -->
+          <li class="comment-item">
+            <div class="d-flex">
+              <!-- Profile Picture by User -->
+              <div class="profile profile-xs">
+              <a href="#!"><img class="profile-img rounded-circle" src="https://via.placeholder.com/40x40" alt=""></a>
+              </div>
+              <!-- Comment by User -->
+              <div class="ms-2">
+                <div class="bg-light p-3 rounded">
+                  <div class="d-flex justify-content-between">
+                    <h6 class="mb-1"> <a href="#!" style="color:black"> User 5 </a> </h6>
+                    <small class="ms-2">5hr</small>
+                  </div>
+                  <p class="small mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+                </div>
+              </div>
+            </div>
+          </li>
+          <!-- Comment item END -->
+
+          <!--   
+          <li class="comment-item">
+            <div class="d-flex">            
+              <div class="profile profile-xs">
+              <a href="#!"><img class="profile-img rounded-circle" src="https://via.placeholder.com/40x40" alt=""></a>
+              </div>
+
+              <div class="ms-2">
+                <div class="bg-light p-3 rounded">
+                  <div class="d-flex justify-content-between">
+                    <h6 class="mb-1"> <a href="#!" style="color:black"></a> </h6>
+                    <small class="ms-2"></small>
+                  </div>
+                  <p class="small mb-0"></p>
+                </div>
+              </div>
+            </div>
+          </li>
+        -->
+        </ul>
+        <!-- Comments Section wrap END -->
+      </div>
+      <!-- Card body END -->
+      <!-- Card footer -->
+      <div class="card-footer border-0 pt-0"></div>
+    </div>
+
+        <!-- Card START -->
+    {% for post in posts %}
+    {% if post.post_id == post.post_id %}
+    <div class="card">
+      <!-- Card header START -->
+      <div class="card-header border-0 pb-0">
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center">
+            <!-- Profile Picture of User-->
+            <div class="profile me-2">
+              <a href="#"> <img class="profile-img rounded-circle" src="https://via.placeholder.com/40x40" alt=""> </a>
+            </div>
+            <!-- Review Header -->
+            <div>
+              <h6 class="card-title mb-0"> <a href="#" style="color:black">{{session['username']}}</a></h6>
+                <div class="nav nav-divider">
+                  <p class="nav-item mb-0 small">Posted {{ post.timestamp }}</p>
+                  <span class="nav-item small" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Public"> <i class="bi bi-globe"></i> </span>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Card header END -->
+      <!-- Card body START -->
+      <div class="card-body">      
+        <div>        
+            <h4>{{ post.title }}</h4>
+            <p>{{ post.content }}</p>  
+        </div>
+        
+        <!-- Amount of Likes, Dislikes, and Comments for Review -->
+        <ul class="list-inline d-sm-flex my-0 small border-top border-bottom py-1 mb-3">
+          <li class="list-inline-item">
+            <a class="g-color-green" href="{{ url_for('post_likes_add') }}">
+              <i class="fa fa-thumbs-up submit" aria-hidden="true"></i>
+              {% set get_post_id = post.post_id %}
+              {{ post_likes }}
+
+              <form action="/post_likes_add" method="POST"> 
+              <input type = "hidden" class="form-control" name = "get_post_id" id = "get_post_id" value = "90a7892612ff46a19f21cdfecf6fd330">
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a class="g-color-red" href="{{ url_for('post_dislikes_add') }}">
+              <i class="fa fa-thumbs-down" aria-hidden="true"></i>
+              {{ post_dislikes }}
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a class="g-color-gray" href="#!">
+              <i class="fa fa-comments" aria-hidden="true"></i>
+              Comments (0)
+              
+            </a>
+          </li>
+        </ul>
+      </form>
+      </div>
+      <!-- Card body END -->
+      <!-- Card footer -->
+      <div class="card-footer border-0 pt-0"></div>
+    </div>
+    {% endif %}
+    {% endfor %}
+
+
+
+  </div>
+  <!-- Latest Reviews END -->
+
+  <!-- Right Sidebar Column START -->
+  <div class="col-lg-3">
+    <div class="row g-4" style="margin-top: 2px;">
+      <!-- Card Trending Reviews right Sidebar START - Created by Ramon Delgadillo -->
+      <div class="col-sm-6 col-lg-12">
+        <div class="card">
+          <!-- Card header START -->
+          <div class="card-header pb-0 border-0" style="background-color: #003153">
+            <h5 class="card-title mb-3" style="color: white">Trending Reviews</h5>
+          </div>
+          <!-- Card header END -->
+          <!-- Card body START -->
+          <div class="card-body">
+            <!-- item -->
+            <div class="pos-relative px-2 mb-3">
+              <h6 class="text-primary text-sm">
+                <a href="#" class="text-primary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio. </a>
+              </h6>
+              <small class="ms-2">Posted 45mins ago by <a class="text-black" href="#">Username</a></small>            
+            </div>
+            <hr class="m-0">
+            <!-- item -->
+            <div class="pos-relative px-2 py-2 mb-3">
+              <h6 class="text-primary text-sm">
+                <a href="#" class="text-primary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
+              </h6>
+              <small class="ms-2">Posted 2hrs ago by <a class="text-black" href="#">Username</a></small>             
+            </div>
+            <hr class="m-0">
+            <!-- item -->
+            <div class="pos-relative px-2 py-2 mb-3">
+              <h6 class="text-primary text-sm">
+                <a href="#" class="text-primary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
+              </h6>
+              <small class="ms-2">Posted 3hrs ago by <a class="text-black" href="#">Username</a></small>            
+            </div>
+            <hr class="m-0">
+            <!-- item -->
+            <div class="pos-relative px-2 py-2 mb-3">
+              <h6 class="text-primary text-sm">
+                <a href="#" class="text-primary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio. </a>
+              </h6>
+              <small class="ms-2">Posted 4hrs ago by <a class="text-black" href="#">Username</a></small>            
+            </div>
+            <hr class="m-0">
+            <!-- item -->
+            <div class="pos-relative px-2 py-2 mb-3">
+              <h6 class="text-primary text-sm">
+                <a href="#" class="text-primary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
+              </h6>
+              <small class="ms-2">Posted 11hrs ago by <a class="text-black" href="#">Username</a></small>            
+            </div>
+            <hr class="m-0">
+            <!-- Load more Reviews -->
+              <div class="d-grid mt-3">
+                <a class="btn btn-sm btn-primary-soft" href="#!">View more</a>
+              </div>
+          </div>
+          <!-- Card body END -->
+        </div>
+      </div>
+
+      <!-- Card Nearby School Reviews right Sidebar START - Created by Ramon Delgadillo -->
+      <div class="col-sm-6 col-lg-12">
+        <div class="card">
+          <!-- Card header START -->
+          <div class="card-header pb-0 border-0" style="background-color: #003153">
+            <h5 class="card-title mb-3" style="color: white;">Reviews of Nearby Schools</h5>
+          </div>
+          <!-- Card header END -->
+          <!-- Card body START -->
+          <div class="card-body">
+            <!-- item -->
+            <!-- item -->
+            <div class="pos-relative px-2 py-2 mb-3">
+              <h6 class="text-primary text-sm">
+                <a href="#" class="text-primary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
+              </h6>
+              <small class="ms-2">Posted 55mins ago by <a class="text-black" href="#">Username</a></small>            
+            </div>
+            <hr class="m-0">
+            <!-- item -->
+            <div class="pos-relative px-2 py-2 mb-3">
+              <h6 class="text-primary text-sm">
+                <a href="#" class="text-primary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
+              </h6>
+              <small class="ms-2">Posted 9hrs ago by <a class="text-black" href="#">Username</a></small>            
+            </div>
+            <hr class="m-0">
+            <!-- item -->
+            <div class="pos-relative px-2 py-2 mb-3">
+              <h6 class="text-primary text-sm">
+                <a href="#" class="text-primary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio. </a>
+              </h6>
+              <small class="ms-2">Posted 14hrs ago by <a class="text-black" href="#">Username</a></small>            
+            </div>
+            <hr class="m-0">
+            <!-- item -->
+            <div class="pos-relative px-2 py-2 mb-3">
+              <h6 class="text-primary text-sm">
+                <a href="#" class="text-primary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio. </a>
+              </h6>
+              <small class="ms-2">Posted 3 days ago by <a class="text-black" href="#">Username</a></small>            
+            </div>
+            <hr class="m-0">
+            <!-- item -->
+            <div class="pos-relative px-2 py-2 mb-3">
+              <h6 class="text-primary text-sm">
+                <a href="#" class="text-primary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </a>
+              </h6>
+              <small class="ms-2">Posted 4 days ago by <a class="text-black" href="#">Username</a></small>            
+            </div>
+            <hr class="m-0">
+            <!-- Load more Reviews -->
+            <div class="d-grid mt-3">
+              <a class="btn btn-sm btn-primary-soft" href="#!">View more</a>
+            </div>
+          </div>
+          <!-- Card body END -->
+        </div>
+      </div>
+      <!-- Card Trending Reviews END -->
+  
+    </div> <!-- Row END -->
+  </div>
+  <!-- Right sidebar END -->
+<!-- End of main section -->
+
+<style>
+  h5 {
+    font-family: 'Tilt Warp', cursive;
+  }
+</style>
+
+{% endblock %}

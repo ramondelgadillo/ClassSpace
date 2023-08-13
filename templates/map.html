@@ -1,0 +1,204 @@
+{% extends 'base.html' %}
+
+{% block map %}
+<!--If execute java script at a different file location, put it in static folder like this: <script src="{{url_for('static', filename='somejavascriptfile.js')}}"></script>-->
+<style>
+    .info-window {
+        font-size: 12px;
+    }
+
+    #map-container {
+        position: relative;
+        width: 75%;
+        height: 800px;
+    }
+
+    #map {
+        width: 100%;
+        height: 100%;
+    }
+
+    #search-box {
+      position: absolute;
+      top: 10px;
+      left: 350px;
+      z-index: 1;
+      background-color: #fff;
+      padding: 5px;
+      border-radius: 2px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+  
+    #search-box input {
+      width: 200px;
+      border: none;
+      outline: none;
+      font-size: 16px;
+      padding: 5px;
+    }
+  
+    #search-box button {
+      border: none;
+      outline: none;
+      background-color: #4285f4;
+      color: #fff;
+      font-size: 16px;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+</style>
+
+<script>
+    //Global variables to help keep consistence information across the functions
+    var map;
+    var autocomplete;
+    var lat;
+    var lon;
+
+    function initMap() {
+    //Check to see if browser support the geolocation function
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+        // Success callback function
+        lat = position.coords.latitude;
+        lon = position.coords.longitude;
+        
+        //make a new map instance, passing in the lat and longtitude to start out in that location
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: lat, lng: lon},
+            zoom: 14
+        });
+
+        //New instance of search box, and auto complete suggestion
+        var input = document.getElementById('searchBox');
+        autocomplete = new google.maps.places.Autocomplete(input);
+        autocomplete.bindTo('bounds', map);
+
+        //Functionality to make the search box generate meaningful information on the HTML map
+        var service = new google.maps.places.PlacesService(map);
+        service.nearbySearch({
+            location: {lat: lat, lng: lon},
+            radius: 5000,
+            type: ['school']
+        }, function(results, status) {
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+            var schools = results.map(result => ({
+                'name': result.name,
+                'address': result.vicinity,
+                'lat': result.geometry.location.lat(),
+                'lon': result.geometry.location.lng()
+            }));
+            //grab the school list generated from the function above and pass it into renderMap() to place marker on those instances
+            google.maps.event.addListenerOnce(map, 'idle', function(){
+                    renderMap(schools, lat, lon);
+                });
+            } else {
+            console.log('Error:', status);
+            alert('Could not retrieve nearby schools.');
+            }
+        });
+        }, function(error) {
+        // Error callback function
+        console.log(error);
+        alert('Could not retrieve your location.');
+        });
+    } else {
+        // Geolocation is not supported by this browser
+        console.log('Geolocation is not supported by this browser.');
+        alert('Geolocation is not supported by this browser.');
+    }
+    }
+
+    //This function is call when searching at a new location,
+    // uses mostly the same methods as above but since most global variable already defined it doesn't need to redo those
+    function searchNearbySchools() {
+    place = autocomplete.getPlace();
+    if (!place.geometry) {
+        console.log("Cannot retrieve place geometry");
+        return;
+    }
+
+    var service = new google.maps.places.PlacesService(map);
+    service.nearbySearch({
+        location: place.geometry.location,
+        radius: 9000,
+        type: ['school']
+    }, function(results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+        var schools = results.map(result => ({
+            'name': result.name,
+            'address': result.vicinity,
+            'lat': result.geometry.location.lat(),
+            'lon': result.geometry.location.lng()
+        }));
+        renderMap(schools, place.geometry.location.lat(), place.geometry.location.lng());
+        } else {
+        console.log('Error:', status);
+        alert('Could not retrieve nearby schools.');
+        }
+    });
+
+    //Center this at the beginning just in case
+    map.setCenter({lat: lat, lng: lon});
+    map.setZoom(14);
+    }
+
+    //Call this to place marker on found school
+    function renderMap(schools, lat, lon) {
+    console.log('Rendering map with schools:', schools);
+    
+    schools.forEach(function(school) {
+        console.log('Adding marker for school:', school);
+        //Make marker at found school location
+        var marker = new google.maps.Marker({
+        position: {lat: school.lat, lng: school.lon},
+        map: map,
+        title: school.name
+        });
+        //Control the padding and size of the info window from the markers
+        var infowindow = new google.maps.InfoWindow({
+            content: '<div class="info-window"><strong>' + school.name + '</strong><br>' + school.address + '</div>',
+            maxWidth: 200
+        });
+        //Whenever the mouse is hover the marker, display the information
+        marker.addListener('mouseover', function() {
+            infowindow.open(map, marker);
+            setTimeout(function() {
+            infowindow.close();}, 1000);
+        });
+    });
+    
+    //Once done make sure to zoom in the new searched place
+    map.setCenter({lat: lat, lng: lon});
+    map.setZoom(14);
+    }
+
+
+
+</script>
+
+{% endblock %}
+
+
+
+{% block content %}
+<!--New div to make sure the search box stay inside the google map-->
+<div id="map-container">
+    <div id="map"></div>
+    <div id="search-box">
+      <input type="text" id="searchBox" placeholder="Search for nearby schools...">
+      <button onclick="searchNearbySchools()">Search</button>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block script %}
+<!--Needs to include the &libraries=places& along with the API-->
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3cf-ieREHB9VhXeI11Affes9rWEE7Nis&libraries=places&callback=initMap"> 
+</script>
+
+
+{% endblock %}

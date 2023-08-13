@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <!-- Kenny Vu: Friend System -->
+  <!-- Main content START -->
+  <div class="col-md-8 col-lg-6 vstack gap-4">
+  <h2>Followers</h2>
+  <!--Use Jinja2 to populate the friends-->
+  <div class="row">
+    {% for friend in friendNames %}
+    <div class="col-md-3">
+      <div class="card mb-3">
+        <img class="card-img-top" src="https://via.placeholder.com/150x150.png?text={{ friend }}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{ friend }}</h5>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+              ut labore et dolore magna aliqua. Eros donec ac odio tempor orci dapibus ultrices.</p>
+          <a href="#" class="btn btn-primary">View Profile</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+
+
+
+    
+  </div>
+</div>
+  
+  {% endblock %}

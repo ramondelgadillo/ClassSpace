@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/styleHome.css">
+    <title>ClassSpace</title>
+    <style>
+      *{
+      margin: 0;  /* The is is to set the margins for this specific element */
+      padding: 0;   /* The space between the content and the border */ 
+      box-sizing: border-box;
+      list-style: none;
+      text-decoration: none;
+      font-family: 'Josefin Sans', sans-serif;
+      }
+
+      body{
+        background-color: #f3f5f9;
+      }
+
+      .wrapper{
+        display: flex;
+        position: relative;
+      }
+
+      .wrapper .sidebar{
+        width: 200px;
+        height: 70vh;
+        padding: 30px 0px;  /* The space between the text and the border */
+        top: 0;
+        left: 0;
+        position: sticky;
+        background-color: #003153;
+      }
+      
+
+      .wrapper .sidebar h3{
+        color: #fff;        /* set text color to white */
+        text-align: center;   /* makes sure the text is centered*/
+        margin-bottom: 30px;   /* set the bottom margin*/ 
+      }
+
+      .wrapper .sidebar ul li{
+        padding: 15px;
+        
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+        border-top: 1px solid rgba(255,255,255,0.05);
+      }    
+
+      .wrapper .sidebar ul li a{
+        
+        display: block;
+      }
+
+      .wrapper .sidebar ul li a .fas{
+        width: 25px;
+      }
+
+
+      footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;    /* Width of the footer*/
+        height: 60px;   /* Height of the footer*/
+      }
+      /* Set styles here */
+      div#mainFeed {
+          bottom: 26px;
+          text-align: center;
+          left: 90px;
+          font-size: 1.2em; /* increased font size */
+        }
+      
+      div#trending {
+          bottom: 30px;
+          left: 280px;
+          font-size: 1.2em; 
+          position: relative;
+        }
+      div#latest {
+          bottom: 190px;
+          left: 1040px;
+          font-size: 1.2em; 
+          position: relative;
+        }
+    </style>
+  </head>
+  <body>
+    <!-- Start of header section -->
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #003153;">
+    <a class="navbar-brand" href="#"><img src="/static/images/ClassSpaceLogo_116x50.png" alt="ClassSpace"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Schools</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Professors</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Courses</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+        <a class="nav-link" href="Login.html" class="text-primary">Log In</a></p>
+    </div>
+  </nav>
+</header>
+
+<!-- End of header section -->
+<div class="wrapper">
+  <div class="sidebar">
+
+    <!-- Trying to do if'else statement to show username or login/Signup. 
+    <div id="greeting">
+      {% if username %}
+        Hello {{ username }}
+      {% else %}
+        <a href="/login,html">Login</a> / <a href="/signUp.html">Signup</a>
+      {% endif %}
+    </div>
+  -->
+
+      <h3>Hello, Username</h3>
+      <img src="https://via.placeholder.com/100x100" class="mr-3" alt="..."> 
+      <ul>
+          <li><a href="#" style="color:#ffffff";>Profile</a></li>
+          <li><a href="#" style="color:#ffffff";>Settings</a></li>
+          <li><a href="#" style="color:#ffffff">Posts</a></li>
+          <li><a href="#" style="color:#ffffff">Reviews</a></li>
+          <li><a href="#" style="color:#ffffff">Rewards</a></li>
+          <li><a href="#" style="color:#ffffff">Notifications</a></li>
+          <li><a href="#" style="color:#ffffff">Inbox</a></li>
+          <li><a href="help" style="color:#ffffff">Help</a></li>
+      </ul> 
+  </div>
+
+<!-- Start of main section -->
+<main class="container my-5">
+  <div class="row">
+    <!-- Start of main feed section -->
+    <div id = "mainFeed" class="col-md-8">
+      <div class="card mb-3">
+        <div class="card-header" style="background-color: #003153;">
+          <h3 style="color:#ffffff";>Main Feed</h3>
+        </div>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Create post" aria-label="Create post" aria-describedby="button-addon2">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Submit</button>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="media">
+            <img src="https://via.placeholder.com/50x50" class="mr-3" alt="...">
+            <div class="media-body">
+              <h5 class="mt-0">Username</h5>
+              <!-- Main feed post content -->
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer text-muted">
+          2 days ago
+        </div>
+
+        <div class="card-body">
+          <div class="media">
+            <img src="https://via.placeholder.com/50x50" class="mr-3" alt="...">
+            <div class="media-body">
+              <h5 class="mt-0">Username</h5>
+              <!-- Main feed post content -->
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer text-muted">
+          4 days ago
+        </div>
+
+        <div class="card-body">
+          <div class="media">
+            <img src="https://via.placeholder.com/50x50" class="mr-3" alt="...">
+            <div class="media-body">
+              <h5 class="mt-0">Username</h5>
+              <!-- Main feed post content -->
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer text-muted">
+          5 days ago
+        </div>
+      </div>
+    </div>
+    <!-- End of main feed section -->
+
+    <!-- Start of sidebar section -->
+    <div id = "trending" class="col-md-4">
+      <div class="card">
+        <div class="card-header" style="background-color: #003153;">
+          <h3 style="color:#ffffff";>Trending Posts</h3>
+        </div>
+        <ul class="list-group list-group-flush">
+          <!-- Sidebar post section -->
+          <li class="list-group-item">
+            <div class="media">
+              <img src="https://via.placeholder.com/50x50" class="mr-3" alt="...">
+              <div class="media-body">
+                <h5 class="mt-0">Post Title</h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+                <li class="list-group-item">
+                  <div class="media">
+                    <img src="https://via.placeholder.com/50x50" class="mr-3" alt="...">
+                    <div class="media-body">
+                      <h5 class="mt-0">Post Title</h5>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+                    </div>
+                  </div>
+                </li>
+        </ul>
+      </div>
+    </div>
+
+    <div id = "latest" class="col-md-4">
+      <div class="card">
+        <div class="card-header" style="background-color: #003153;">
+          <h3 style="color:#ffffff";>Latest Posts</h3>
+        </div>
+        <ul class="list-group list-group-flush">
+          <!-- Sidebar post section -->
+          <li class="list-group-item">
+            <div class="media">
+              <img src="https://via.placeholder.com/50x50" class="mr-3" alt="...">
+              <div class="media-body">
+                <h5 class="mt-0">Post Title</h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+                <li class="list-group-item">
+                  <div class="media">
+                    <img src="https://via.placeholder.com/50x50" class="mr-3" alt="...">
+                    <div class="media-body">
+                      <h5 class="mt-0">Post Title</h5>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+                    </div>
+                  </div>
+                </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+    
+</main>
+    <!-- End of main section -->
+    <!-- Start of footer section -->
+  <footer>
+    <div class="py-3" style=" position: sticky; background-color: #003153;">
+      <div class="container">
+        <p style="color:#ffffff";>&copy;ClassSpace 2023</p>
+      </div>
+    </div>
+  </footer>
+  <!-- End of footer section -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body> 
